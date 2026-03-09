@@ -449,14 +449,8 @@ h2 {
 }
 
 .bottom-nav {
-  position: fixed;
-  left: 50%;
+  position: sticky;
   bottom: 0;
-  transform: translateX(-50%);
-
-  width: min(100%, 420px);
-  max-width: 420px;
-
   z-index: 50;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
