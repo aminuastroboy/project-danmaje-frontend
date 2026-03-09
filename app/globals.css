@@ -74,6 +74,12 @@ button {
   top: -20px;
 }
 
+.left-header {
+  justify-content: flex-start;
+  gap: 12px;
+  align-items: flex-start;
+  }
+
 .orb-right {
   width: 120px;
   height: 120px;
