@@ -450,22 +450,20 @@ h2 {
 
 .bottom-nav {
   position: fixed;
-  bottom: 0;
   left: 50%;
+  bottom: 0;
   transform: translateX(-50%);
-  width: 100%;
+
+  width: min(100%, 420px);
   max-width: 420px;
 
   z-index: 50;
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-
   padding: 12px;
 
   border-top: 1px solid var(--border);
-
   background: rgba(2, 6, 23, 0.94);
   backdrop-filter: blur(16px);
 }
