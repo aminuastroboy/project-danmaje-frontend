@@ -88,12 +88,7 @@ function Screen({
       <div className="top-hero">
         <div className="orb orb-left" />
         <div className="orb orb-right" />
-        <div className="top-hero-content">
-          <div>
-            <p className="eyebrow">Astrovia Systems</p>
-            <h1>{title}</h1>
-            <p className="subtitle">{subtitle}</p>
-          </div>
+        <div className="top-hero-content left-header">
           {showBack ? (
             <button className="ghost-button" onClick={onBack}>
               Back
@@ -103,6 +98,12 @@ function Screen({
               <Menu size={18} />
             </button>
           )}
+
+          <div>
+            <p className="eyebrow">Astrovia Systems</p>
+            <h1>{title}</h1>
+            <p className="subtitle">{subtitle}</p>
+          </div>
         </div>
       </div>
       <div className="page-content">{children}</div>
