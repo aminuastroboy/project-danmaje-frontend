@@ -15,9 +15,12 @@
   --grad-c: #083344;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at top left, rgba(34, 211, 238, 0.15), transparent 30%),
     radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.16), transparent 30%),
@@ -41,11 +44,22 @@ button {
   width: 100%;
 }
 
+.app-shell > * {
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
 .top-hero {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
   padding: 24px 20px 20px;
+  min-height: 140px;
   background: linear-gradient(135deg, var(--grad-a), var(--grad-b), var(--grad-c));
 }
 
@@ -55,6 +69,12 @@ button {
   display: flex;
   justify-content: space-between;
   gap: 16px;
+  align-items: flex-start;
+}
+
+.left-header {
+  justify-content: flex-start;
+  gap: 12px;
   align-items: flex-start;
 }
 
@@ -71,12 +91,6 @@ button {
   background: #22d3ee;
   left: -40px;
   top: -20px;
-}
-
-.left-header {
-  justify-content: flex-start;
-  gap: 12px;
-  align-items: flex-start;
 }
 
 .orb-right {
@@ -99,7 +113,10 @@ button {
   color: #a5f3fc;
 }
 
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
   margin: 0;
 }
 
@@ -144,14 +161,7 @@ h2 {
   gap: 16px;
   padding: 16px;
   padding-bottom: 88px;
-}
-
-.app-shell > * {
-  width: 100%;
-  min-height: 100vh;
-  max-width: 420px;
-  margin: 0 auto;
-  background: transparent;
+  flex: 1;
 }
 
 .card {
@@ -451,25 +461,18 @@ h2 {
 .bottom-nav {
   position: sticky;
   bottom: 0;
-
+  z-index: 20;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-
   padding: 12px;
-
   width: 100%;
-
+  max-width: 420px;
+  margin: 0 auto;
   border-top: 1px solid var(--border);
   background: rgba(2, 6, 23, 0.94);
   backdrop-filter: blur(16px);
-
-  z-index: 20;
 }
-
-.app-shell > * {
-  position: relative;
-    }
 
 .bottom-nav-item {
   padding: 10px 8px;
