@@ -77,7 +77,7 @@ button {
   justify-content: flex-start;
   gap: 12px;
   align-items: flex-start;
-  }
+}
 
 .orb-right {
   width: 120px;
@@ -452,10 +452,15 @@ h2 {
   position: sticky;
   bottom: 0;
   z-index: 50;
+
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   padding: 12px;
+
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
 
   border-top: 1px solid var(--border);
   background: rgba(2, 6, 23, 0.94);
@@ -479,14 +484,22 @@ h2 {
 @media (min-width: 768px) {
   .app-shell {
     padding: 24px 0;
+    display: flex;
+    justify-content: center;
   }
 
   .app-shell > * {
+    width: 100%;
+    max-width: 420px;
     border: 1px solid var(--border);
     border-radius: 32px;
     overflow: hidden;
     min-height: calc(100vh - 48px);
     background: rgba(2, 6, 23, 0.78);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  .bottom-nav {
+    max-width: 420px;
   }
 }
