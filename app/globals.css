@@ -49,10 +49,10 @@ button {
   max-width: 420px;
   min-height: 100vh;
   margin: 0 auto;
-  background: transparent;
   display: flex;
   flex-direction: column;
   position: relative;
+  background: transparent;
 }
 
 .top-hero {
@@ -467,42 +467,55 @@ h2 {
   width: calc(100% - 24px);
   max-width: 392px;
 
-  z-index: 50;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  padding: 10px 10px calc(10px + env(safe-area-inset-bottom, 0px));
+  gap: 6px;
 
+  padding: 10px 6px;
+
+  border-radius: 22px;
   border: 1px solid rgba(103, 232, 249, 0.14);
-  border-radius: 24px;
 
-  background: rgba(2, 6, 23, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
   box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(103, 232, 249, 0.04) inset;
+    0 10px 25px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(103, 232, 249, 0.05);
+
+  z-index: 100;
+  height: auto;
+  min-height: unset;
 }
 
 .bottom-nav-item {
-  padding: 12px 8px;
-  display: grid;
-  place-items: center;
-  gap: 6px;
-  border: none;
-  border-radius: 18px;
-  background: transparent;
-  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 6px;
+
   font-size: 11px;
+  border-radius: 16px;
+  color: #64748b;
+
+  background: transparent;
+  border: none;
+
   transition: all 0.2s ease;
 }
 
 .bottom-nav-item.active {
-  background: rgba(34, 211, 238, 0.12);
   color: var(--accent);
+  background: rgba(34, 211, 238, 0.12);
   transform: translateY(-1px);
   box-shadow: inset 0 0 0 1px rgba(103, 232, 249, 0.08);
+}
+
+.bottom-nav-item.active svg {
+  filter: drop-shadow(0 0 6px rgba(103, 232, 249, 0.6));
 }
 
 @media (min-width: 768px) {
@@ -526,4 +539,4 @@ h2 {
   .bottom-nav {
     max-width: 392px;
   }
-  }
+    }
