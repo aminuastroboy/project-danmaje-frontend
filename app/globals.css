@@ -38,8 +38,7 @@ button {
 
 .app-shell {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 
 .top-hero {
@@ -149,7 +148,6 @@ h2 {
 
 .app-shell > * {
   width: 100%;
-  max-width: 420px;
   min-height: 100vh;
   background: transparent;
 }
