@@ -1,17 +1,13 @@
 import { Receipt, ShieldCheck, User, Wallet } from "lucide-react";
 
-type PageId =
-  | "home"
-  | "transactions"
-  | "agent"
-  | "profile";
+export type NavPage = "home" | "transactions" | "agent" | "profile";
 
 export function BottomNav({
   current,
   setPage,
 }: {
-  current: PageId;
-  setPage: (page: string) => void;
+  current: NavPage;
+  setPage: React.Dispatch<React.SetStateAction<any>>;
 }) {
   const items = [
     { id: "home", label: "Home", icon: Wallet },
@@ -38,4 +34,4 @@ export function BottomNav({
       })}
     </div>
   );
-}
+     }
