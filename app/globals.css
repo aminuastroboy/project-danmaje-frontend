@@ -161,7 +161,7 @@ h2 {
   display: grid;
   gap: 16px;
   padding: 16px;
-  padding-bottom: 120px;
+  padding-bottom: 100px;
   flex: 1;
 }
 
@@ -461,23 +461,22 @@ h2 {
 .bottom-nav {
   position: fixed;
   left: 50%;
-  bottom: 14px;
+  bottom: 12px;
   transform: translateX(-50%);
 
-  width: fit-content;
-  min-width: 340px;
-  max-width: 392px;
+  width: calc(100% - 20px);
+  max-width: 380px;
 
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  padding: 10px 8px calc(10px + env(safe-area-inset-bottom, 0px));
+  padding: 8px;
 
-  border-radius: 22px;
+  border-radius: 20px;
   border: 1px solid rgba(103, 232, 249, 0.14);
 
-  background: rgba(2, 6, 23, 0.85);
+  background: rgba(2, 6, 23, 0.88);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
@@ -487,33 +486,46 @@ h2 {
 
   z-index: 100;
   height: auto;
-  min-height: unset;
+}
+
+.bottom-nav * {
+  align-self: center;
 }
 
 .bottom-nav-item {
+  flex: 1;
+  min-width: 0;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  min-width: 74px;
-  padding: 8px 6px;
+  gap: 4px;
+  padding: 6px 4px;
 
   font-size: 11px;
-  border-radius: 16px;
+  line-height: 1;
+  border-radius: 14px;
   color: #64748b;
 
   background: transparent;
   border: none;
 
+  height: auto;
+  min-height: 0;
+
   transition: all 0.2s ease;
+}
+
+.bottom-nav-item svg {
+  width: 18px;
+  height: 18px;
 }
 
 .bottom-nav-item.active {
   color: var(--accent);
   background: rgba(34, 211, 238, 0.12);
-  transform: translateY(-1px);
-  box-shadow: inset 0 0 0 1px rgba(103, 232, 249, 0.08);
 }
 
 .bottom-nav-item.active svg {
@@ -549,23 +561,17 @@ h2 {
     transform: none;
 
     width: 100%;
-    min-width: 0;
     max-width: 100%;
-
     border-radius: 0;
     border-left: none;
     border-right: none;
     border-bottom: none;
-
     padding: 12px;
     box-shadow: none;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
   }
 
   .bottom-nav-item {
-    min-width: 0;
     font-size: 12px;
     padding: 10px 8px;
   }
-                    }
+  }
