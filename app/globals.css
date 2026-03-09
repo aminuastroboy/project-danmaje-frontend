@@ -149,6 +149,8 @@ h2 {
 .app-shell > * {
   width: 100%;
   min-height: 100vh;
+  max-width: 420px;
+  margin: 0 auto;
   background: transparent;
 }
 
@@ -447,14 +449,23 @@ h2 {
 }
 
 .bottom-nav {
-  position: sticky;
+  position: fixed;
   bottom: 0;
-  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 420px;
+
+  z-index: 50;
+
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
+
   padding: 12px;
+
   border-top: 1px solid var(--border);
+
   background: rgba(2, 6, 23, 0.94);
   backdrop-filter: blur(16px);
 }
