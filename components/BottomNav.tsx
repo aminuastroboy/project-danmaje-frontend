@@ -1,6 +1,6 @@
 import { Receipt, ShieldCheck, User, Wallet } from "lucide-react";
 
-export type NavPage = "home" | "transactions" | "agent" | "profile";
+type NavPage = "home" | "transactions" | "agent" | "profile";
 
 export function BottomNav({
   current,
@@ -21,6 +21,7 @@ export function BottomNav({
       {items.map((item) => {
         const Icon = item.icon;
         const active = current === item.id;
+
         return (
           <button
             key={item.id}
@@ -34,4 +35,4 @@ export function BottomNav({
       })}
     </div>
   );
-     }
+      }
