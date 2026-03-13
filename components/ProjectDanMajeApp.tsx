@@ -1,5 +1,6 @@
 "use client";
 
+import { getTransactions, type TransactionItem } from "@/lib/transactions";
 import { useState } from "react";
 import { loginUser } from "@/lib/auth";
 import { getWalletBalance } from "@/lib/wallet";
@@ -9,6 +10,7 @@ const [password, setPassword] = useState("");
 const [loading, setLoading] = useState(false);
 const [error, setError] = useState("");
 const [walletBalance, setWalletBalance] = useState<number>(0);
+const [transactions, setTransactions] = useState<TransactionItem[]>([]);
 import {
   ArrowDownToLine,
   ArrowUpFromLine,
@@ -195,14 +197,22 @@ export default function ProjectDanMajeApp() {
   if (!token) return;
   if (page === "login") return;
 
-  const loadWallet = async () => {
+  const loadData = async () => {
     try {
-      const wallet = await getWalletBalance();
+      const [wallet, txns] = await Promise.all([
+        getWalletBalance(),
+        getTransactions(),
+      ]);
+
       setWalletBalance(wallet.available_balance);
+      setTransactions(txns);
     } catch (err) {
-      console.error("Wallet fetch failed:", err);
+      console.error("Dashboard data fetch failed:", err);
     }
   };
+
+  loadData();
+}, [page]);
 
   loadWallet();
 }, [page]);
