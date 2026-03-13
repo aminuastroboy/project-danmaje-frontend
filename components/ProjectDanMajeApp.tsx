@@ -1,6 +1,11 @@
 "use client";
 
 import { useState } from "react";
+const [phone, setPhone] = useState("");
+const [password, setPassword] = useState("");
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState("");
+import { loginUser } from "@/lib/auth";
 import {
   ArrowDownToLine,
   ArrowUpFromLine,
@@ -18,6 +23,7 @@ import { TextInput, SelectInput, PrimaryButton } from "@/components/ui/Form";
 import { BottomNav } from "@/components/BottomNav";
 
 type Page =
+  | "login"
   | "home"
   | "data"
   | "airtime"
@@ -112,7 +118,7 @@ function Screen({
 }
 
 export default function ProjectDanMajeApp() {
-  const [page, setPage] = useState<Page>("home");
+  const [page, setPage] = useState<Page>("login");
   const [selectedNetwork, setSelectedNetwork] = useState("MTN");
   const [dataPlan, setDataPlan] = useState("1GB Daily");
   const [airtimeAmount, setAirtimeAmount] = useState("500");
@@ -121,7 +127,67 @@ export default function ProjectDanMajeApp() {
 
   const goHome = () => setPage("home");
 
+  const handleLogin = async () => {
+  try {
+    setLoading(true);
+    setError("");
+
+    const data = await loginUser({
+      phone,
+      password,
+    });
+
+    localStorage.setItem("access_token", data.access_token);
+    setPage("home");
+  } catch (err) {
+    const message =
+      err instanceof Error ? err.message : "Unable to login";
+    setError(message);
+  } finally {
+    setLoading(false);
+  }
+};
+
+  const LoginPage = () => (
+  <>
+    <Screen
+      title="Welcome Back"
+      subtitle="Login to Project Dan Maje"
+      onBack={() => {}}
+      showBack={false}
+    >
+      <Card>
+        <TextInput
+          label="Phone Number"
+          placeholder="08012345678"
+          value={phone}
+          onChange={setPhone}
+        />
+
+        <TextInput
+          label="Password"
+          placeholder="Enter your password"
+          value={password}
+          onChange={setPassword}
+          type="password"
+        />
+
+        {error ? (
+          <p style={{ color: "#fda4af", fontSize: "14px", marginBottom: "12px" }}>
+            {error}
+          </p>
+        ) : null}
+
+        <PrimaryButton onClick={handleLogin}>
+          {loading ? "Logging in..." : "Login"}
+        </PrimaryButton>
+      </Card>
+    </Screen>
+  </>
+);
+
   const pages: Record<Page, React.ReactNode> = {
+    login: <LoginPage />,
     home: (
       <>
         <Screen title="Project Dan Maje" subtitle="Digital vending made simple" onBack={goHome} showBack={false}>
