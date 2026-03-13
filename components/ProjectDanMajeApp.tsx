@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { loginUser } from "@/lib/auth";
+import { getWalletBalance } from "@/lib/wallet";
+import { useEffect, useState } from "react";
 const [phone, setPhone] = useState("");
 const [password, setPassword] = useState("");
 const [loading, setLoading] = useState(false);
 const [error, setError] = useState("");
-import { loginUser } from "@/lib/auth";
+const [walletBalance, setWalletBalance] = useState<number>(0);
 import {
   ArrowDownToLine,
   ArrowUpFromLine,
@@ -186,6 +189,24 @@ export default function ProjectDanMajeApp() {
   </>
 );
 
+  useEffect(() => {
+  const token = localStorage.getItem("access_token");
+
+  if (!token) return;
+  if (page === "login") return;
+
+  const loadWallet = async () => {
+    try {
+      const wallet = await getWalletBalance();
+      setWalletBalance(wallet.available_balance);
+    } catch (err) {
+      console.error("Wallet fetch failed:", err);
+    }
+  };
+
+  loadWallet();
+}, [page]);
+
   const pages: Record<Page, React.ReactNode> = {
     login: <LoginPage />,
     home: (
@@ -195,7 +216,7 @@ export default function ProjectDanMajeApp() {
             <div className="wallet-head">
               <div>
                 <p className="eyebrow soft">Wallet Balance</p>
-                <h2>₦45,000</h2>
+                <h2>₦{walletBalance.toLocaleString()}</h2>
                 <p className="muted">Main wallet • Available</p>
               </div>
               <div className="icon-bubble">
