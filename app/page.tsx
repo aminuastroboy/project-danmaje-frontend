@@ -1,5 +1,1 @@
-import ProjectDanMajeApp from "@/components/ProjectDanMajeApp";
-
-export default function Page() {
-  return <ProjectDanMajeApp />;
-}
+import ProjectDanMajeApp from "@/components/ProjectDanMajeApp";\nexport default function Page() { return <ProjectDanMajeApp />; }\n
