@@ -1,1 +1,1 @@
-import MT-Sub from "@/components/ProjectDanMajeApp";\nexport default function Page() { return <MT-Sub />; }\n
+import MT-Sub from "@/components/MT-Sub";\nexport default function Page() { return <MT-Sub />; }\n
